@@ -21,9 +21,9 @@ from rest_framework_jwt.views import obtain_jwt_token
 # from django.views.static import serve
 # from abstra_user import settings
 
-from blogs.views import BlogModelViewset, TagModelViewset, CommentModelViewset
-from useroperate.views import UserFavorsViewset, ApiLaohuangliView, CreateImageViewset, ConstellationView, HotTrendsView
-from users.views import EmailCodeViewset, UserViewset
+from blogs.views import BlogModelViewset, TagModelViewset
+# from useroperate.views import UserFavorsViewset, ApiLaohuangliView, CreateImageViewset, ConstellationView, HotTrendsView
+# from users.views import EmailCodeViewset, UserViewset
 
 from rest_framework import routers
 
@@ -32,13 +32,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
-router.register(r'user/favors', UserFavorsViewset, basename='user_favors')
-router.register(r'codes', EmailCodeViewset, basename="codes")
-router.register(r'user', UserViewset, basename="users")
+# router.register(r'user/favors', UserFavorsViewset, basename='user_favors')
+# router.register(r'codes', EmailCodeViewset, basename="codes")
+# router.register(r'user', UserViewset, basename="users")
 router.register(r'blogs', BlogModelViewset, basename="blogs")
 router.register(r'tags', TagModelViewset, basename="tags")
-router.register(r'comments', CommentModelViewset, basename="comments")
-router.register(r'imagetest', CreateImageViewset, basename="imagetest")
+# router.register(r'comments', CommentModelViewset, basename="comments")
+# router.register(r'imagetest', CreateImageViewset, basename="imagetest")
 
 
 # from rest_framework.schemas import get_schema_view
@@ -47,13 +47,13 @@ router.register(r'imagetest', CreateImageViewset, basename="imagetest")
 
 urlpatterns = [
     # path('user/logout/', TestView.as_view()),
-    path('user/login/', obtain_jwt_token),
+    # path('user/login/', obtain_jwt_token),
     path('admin/', admin.site.urls),
     # re_path(r'media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('laohuangli/', ApiLaohuangliView.as_view()),
-    path('constellation/', ConstellationView.as_view()),
-    path('hosttrends/', HotTrendsView.as_view()),
+    # path('laohuangli/', ApiLaohuangliView.as_view()),
+    # path('constellation/', ConstellationView.as_view()),
+    # path('hosttrends/', HotTrendsView.as_view()),
     # path('api/v1/blog/<int:blog_id>', BlogView.as_view()),
     # path('userfavors/', UserFavorsViewset.as_view()),
     path('', include(router.urls)),

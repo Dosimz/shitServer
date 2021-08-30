@@ -1308,7 +1308,7 @@ codename</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="328" parent="282" name="blogs_article_author_id_cb695e50_fk_users_usermodel_id">
-      <ColNames>author_id</ColNames>
+      <ColNames></ColNames>
       <RefTableName>users_usermodel</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>

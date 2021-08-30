@@ -89,16 +89,23 @@ WSGI_APPLICATION = 'pepsicola.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': "pepsicola",
+#         'USER': 'root',
+#         'PASSWORD': '02240224',
+#         'HOST': "127.0.0.1",
+#         'PORT': '3306',
+#         # 'INNOOB'
+#         'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "pepsicola",
-        'USER': 'root',
-        'PASSWORD': '02240224',
-        'HOST': "127.0.0.1",
-        'PORT': '3306',
-        # 'INNOOB'
-        'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}
+        'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(str(BASE_DIR), 'db.sqlite3'),
     }
 }
 
@@ -149,7 +156,7 @@ MEDIA_URL = "/media/"
 # )
 MEDIA_ROOT = os.path.join(BASE_DIR, "media").replace('\\', '/')
 
-AUTH_USER_MODEL = 'users.UserModel'
+# AUTH_USER_MODEL = 'users.UserModel'
 
 
 #rest_framework配置
@@ -167,15 +174,15 @@ REST_FRAMEWORK = {
 }
 import  datetime
 
-JWT_AUTH = {
-        'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),  # JWT_EXPIRATION_DELTA 指明token的有效期
-        'JWT_AUTH_HEADER_PREFIX': 'JWT',  # 默认的
-        'JWT_RESPONSE_PAYLOAD_HANDLER': 'users.views.jwt_response_payload_handler'
-    }
-
-AUTHENTICATION_BACKENDS = (
-    'users.views.CustomBackend',
-)
+# JWT_AUTH = {
+#         'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),  # JWT_EXPIRATION_DELTA 指明token的有效期
+#         'JWT_AUTH_HEADER_PREFIX': 'JWT',  # 默认的
+#         'JWT_RESPONSE_PAYLOAD_HANDLER': 'users.views.jwt_response_payload_handler'
+#     }
+# 用户验证相关
+# AUTHENTICATION_BACKENDS = (
+#     'users.views.CustomBackend',
+# )
 
 
 # from apps import bjnews
@@ -185,17 +192,17 @@ AUTHENTICATION_BACKENDS = (
 # )
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
-EMAIL_HOST = 'smtp.qq.com'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'yuyyyyi@foxmail.com'
-EMAIL_HOST_PASSWORD = 'afnzrjfsavrlebga'
-EMAIL_FROM = 'YUY<yuyyyyi@foxmail.com>'
+# EMAIL_USE_TLS = False
+# EMAIL_USE_SSL = True
+# EMAIL_HOST = 'smtp.qq.com'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'yuyyyyi@foxmail.com'
+# EMAIL_HOST_PASSWORD = 'afnzrjfsavrlebga'
+# EMAIL_FROM = 'YUY<yuyyyyi@foxmail.com>'
 
-
+# which by default is set to True and automatically appends a slash / to URLs that would otherwise 404
 APPEND_SLASH = True
 
 # SWAGGER_SETTINGS = {

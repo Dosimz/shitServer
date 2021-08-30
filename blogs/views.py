@@ -7,7 +7,7 @@ from rest_framework import viewsets, permissions
 from rest_framework import serializers
 from rest_framework.response import Response
 from blogs import models
-from .serializers import BlogModelSerializer, TagModelSerializer, CommentModelSerializer
+from .serializers import BlogModelSerializer, TagModelSerializer
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -118,35 +118,35 @@ class TagModelViewset(viewsets.ModelViewSet):
     queryset = models.Tag.objects.all()
 
 
-class CommentModelViewset(viewsets.ModelViewSet):
-    """
-    retrieve:
-    查看某一条评论。
+# class CommentModelViewset(viewsets.ModelViewSet):
+#     """
+#     retrieve:
+#     查看某一条评论。
 
-    list:
-    查看所有评论
+#     list:
+#     查看所有评论
 
-    create:
-    新增一条评论
+#     create:
+#     新增一条评论
 
-    update:
-    更新评论
+#     update:
+#     更新评论
 
-    partial_update:
-    局部更新评论
+#     partial_update:
+#     局部更新评论
 
-    delete:
-    删除一条评论
-    """
-    # permission_classes = (IsAuthenticated,)
-    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication)
+#     delete:
+#     删除一条评论
+#     """
+#     # permission_classes = (IsAuthenticated,)
+#     authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication)
 
-    def get_permissions(self):
-        if self.action == "retrieve":
-            return []
-        elif self.action == "create":
-            return [permissions.IsAuthenticated()]
+#     def get_permissions(self):
+#         if self.action == "retrieve":
+#             return []
+#         elif self.action == "create":
+#             return [permissions.IsAuthenticated()]
 
-        return []
-    serializer_class = CommentModelSerializer
-    queryset = models.Comment.objects.all()
+#         return []
+#     serializer_class = CommentModelSerializer
+#     queryset = models.Comment.objects.all()
